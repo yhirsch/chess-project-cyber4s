@@ -8,7 +8,7 @@ const KNIGHT = 'knight';
 const BISHOP = 'bishop';
 const KING = 'king';
 const QUEEN = 'queen';
-
+//add names so it can be accessed in array
 const PIECES = [ROOK, KNIGHT, BISHOP, KING, QUEEN, BISHOP, KNIGHT, ROOK];
 
 const CHESS_BOARD_ID = 'chess-board';

@@ -14,26 +14,34 @@ class Piece {
       }
       return WHITE_PLAYER;
     }
-  
+
+  //switched out the if else because the switch statement is a cleaner syntax
     getPossibleMoves(boardData) {
       // Get moves
       let moves;
-      if (this.type === PAWN) {
-        moves = this.getPawnMoves(boardData);
-      } else if (this.type === ROOK) {
-        moves = this.getRookMoves(boardData);
-      } else if (this.type === KNIGHT) {
-        moves = this.getKnightMoves(boardData);
-      } else if (this.type === BISHOP) {
-        moves = this.getBishopMoves(boardData);
-      } else if (this.type === KING) {
-        moves = this.getKingMoves(boardData);
-      } else if (this.type === QUEEN) {
-        moves = this.getQueenMoves(boardData);
-      } else {
-        console.log("Unknown type", type)
+      switch (this.type) {
+        case PAWN:
+          moves = this.getPawnMoves(boardData);
+          break;
+        case ROOK:
+          moves = this.getRookMoves(boardData);
+          break;
+        case KNIGHT:
+          moves = this.getKnightMoves(boardData);
+          break;
+        case BISHOP:
+          moves = this.getBishopMoves(boardData);
+          break;
+        case KING:
+          moves = this.getKingMoves(boardData);
+          break;
+        case QUEEN:
+          moves = this.getQueenMoves(boardData);
+          break;
+        default:
+          console.log("Unknown type", type)
       }
-  
+
       // Get filtered absolute moves
       let filteredMoves = [];
       for (const absoluteMove of moves) {
