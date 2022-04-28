@@ -31,6 +31,7 @@ class Game {
     if (this.currentPlayer !== piece.player || this.winner !== undefined) {
       return [];
     }
-    return piece.getPossibleMoves(this.boardData);
+    //I changed list of moves because two similar names were confusing//
+    return piece.getListOfMoves(this.boardData);
   }
 }

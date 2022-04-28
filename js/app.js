@@ -17,6 +17,7 @@ let game;
 let table;
 let selectedPiece;
 
+//
 function tryUpdateSelectedPiece(row, col) {
   // Clear all previous possible moves
   for (let i = 0; i < BOARD_SIZE; i++) {

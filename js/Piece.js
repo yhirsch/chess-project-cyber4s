@@ -1,4 +1,3 @@
-// TODO: Refactor to shorten and deduplicate code - Avraham.
 
 class Piece {
     constructor(row, col, type, player) {
@@ -16,7 +15,7 @@ class Piece {
     }
 
   //switched out the if else because the switch statement is a cleaner syntax
-    getPossibleMoves(boardData) {
+    getListOfMoves(boardData) {
       // Get moves
       let moves;
       switch (this.type) {

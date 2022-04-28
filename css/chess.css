@@ -1,0 +1,47 @@
+table {
+  position: relative;
+  margin: auto;
+}
+.light-cell {
+  background: rgb(211, 210, 210);
+  width: 48px;
+  height: 48px;
+  user-select: none;
+}
+
+.dark-cell {
+  background: rgb(63, 63, 63);
+  width: 48px;
+  height: 48px;
+  user-select: none;
+}
+
+.selected {
+  background: rgb(229, 142, 11);
+}
+
+.possible-move {
+  background: rgb(221, 142, 46);
+}
+
+.winner-dialog {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 50;
+  border-radius: 10px;
+  width: max-content;
+}
+
+.title {
+  text-align: center;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background: #bc8f63;
+}
