@@ -16,6 +16,8 @@ const CHESS_BOARD_ID = 'chess-board';
 let game;
 let table;
 let selectedPiece;
+//The game doesn't track turns, so turns keeps track
+let turn = 0
 
 //
 function tryUpdateSelectedPiece(row, col) {
@@ -40,14 +42,19 @@ function tryUpdateSelectedPiece(row, col) {
   table.rows[row].cells[col].classList.add('selected');
   selectedPiece = piece;
 }
-
-function onCellClick(row, col) {
+//id needs to be declared
+function onCellClick(row, col, id) {
   // selectedPiece - The current selected piece (selected in previous click)
   // row, col - the currently clicked cell - it may be empty, or have a piece.
   if (selectedPiece !== undefined && game.tryMove(selectedPiece, row, col)) {
     selectedPiece = undefined;
     // Recreate whole board - this is not efficient, but doesn't affect user experience
     createChessBoard(game.boardData);
+    //if piece successfully moves, increment turn
+    turn = turn + 1
+    if(turn % 2 === 0){
+document.getElementById(id).style.transform = "rotate(180deg)";
+    }
   } else {
     tryUpdateSelectedPiece(row, col);
   }
@@ -56,7 +63,12 @@ function onCellClick(row, col) {
 // Adds an image to cell with the piece's image
 function addImage(cell, player, name) {
   const image = document.createElement('img');
-  image.src = 'images/' + player + '/' + name + '.png';
+  if (turn % 2 !== 0){
+    //I need to check if its not even 
+    image.src = 'invertedimages/' + player + '/' + name + '.png';
+  }else{
+    image.src = 'images/' + player + '/' + name + '.png';
+  }
   image.draggable = false;
   cell.appendChild(image);
 }
@@ -79,8 +91,8 @@ function createChessBoard(boardData) {
         cell.className = 'light-cell';
       } else {
         cell.className = 'dark-cell';
-      }
-      cell.addEventListener('click', () => onCellClick(row, col));
+      }//add chess id so I can use call it from Addimage
+      cell.addEventListener('click', () => onCellClick(row, col, CHESS_BOARD_ID));
     }
   }
 
